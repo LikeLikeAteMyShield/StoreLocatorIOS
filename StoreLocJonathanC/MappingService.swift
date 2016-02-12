@@ -14,6 +14,11 @@ class MappingService {
     var mapView: MKMapView
     var searchResults: [MKMapItem]
     
+    var routeSteps = [MKRouteStep]()
+    
+    var spinner: UIActivityIndicatorView?
+    
+    
     init(mapView:MKMapView) {
         self.mapView = mapView
         self.searchResults = [MKMapItem]()
@@ -29,16 +34,7 @@ class MappingService {
         
         clearAllPins()
         
-        let spinner = UIActivityIndicatorView()
-        spinner.color = UIColor.blackColor()
-        spinner.center = mapView.center
-        
-        let transform = CGAffineTransformMakeScale(2, 2)
-        spinner.transform = transform
-        
-        spinner.startAnimating()
-        
-        mapView.addSubview(spinner)
+        startLoadingSpinner()
         
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = searchPhrase
@@ -50,8 +46,7 @@ class MappingService {
             
             guard let response = response else {
                 print("No results found")
-                spinner.stopAnimating()
-                spinner.removeFromSuperview()
+                self.stopLoadingSpinner()
                 return
             }
             
@@ -61,12 +56,12 @@ class MappingService {
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = item.placemark.coordinate
                 annotation.title = item.name
+                annotation.subtitle =  item.placemark.thoroughfare
                 
                 self.mapView.addAnnotation(annotation)
             }
             
-            spinner.stopAnimating()
-            spinner.removeFromSuperview()
+            self.stopLoadingSpinner()
         }
     }
     
@@ -80,7 +75,7 @@ class MappingService {
     }
     
     func getDirectionsToLocation(destination: MKMapItem) {
-    
+        
         let request = MKDirectionsRequest()
         
         request.source = MKMapItem.mapItemForCurrentLocation()
@@ -94,6 +89,10 @@ class MappingService {
             } else {
                 for route in response!.routes {
                     self.mapView.addOverlay(route.polyline, level: .AboveRoads)
+                    
+                    for step in route.steps {
+                        self.routeSteps.append(step)
+                    }
                 }
                 
                 let annotation = MKPointAnnotation()
@@ -103,5 +102,31 @@ class MappingService {
                 self.mapView.addAnnotation(annotation)
             }
         }
+    }
+    
+    func startLoadingSpinner() {
+        
+        spinner = UIActivityIndicatorView()
+        
+        if mapView.mapType == .Standard {
+            spinner!.color = UIColor.blackColor()
+        } else {
+            spinner!.color = UIColor.whiteColor()
+        }
+        
+        
+        
+        let transform = CGAffineTransformMakeScale(2, 2)
+        spinner!.transform = transform
+        
+        spinner!.startAnimating()
+        mapView.addSubview(spinner!)
+        spinner!.center = mapView.center
+    }
+    
+    func stopLoadingSpinner() {
+        
+        self.spinner!.stopAnimating()
+        self.spinner!.removeFromSuperview()
     }
 }

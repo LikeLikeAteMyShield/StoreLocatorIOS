@@ -25,6 +25,9 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, UISearchBarDel
         
         mapView.delegate = self
         mapView.showsUserLocation = true
+        mapView.showsBuildings = true
+        mapView.showsPointsOfInterest = true
+        mapView.showsCompass = false
         
         searchBar.delegate = self
         
@@ -54,11 +57,6 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, UISearchBarDel
             let destination = segue.destinationViewController as! DestinationsTableViewController
             destination.destinations = (mappingService?.searchResults)!
         }
-        
-        /*if segue.identifier == "RecentSearchesSegue" {
-            let destination = segue.destinationViewController as! RecentSearchesTableViewController
-            destination.recentSearches = (NSKeyedUnarchiver.unarchiveObjectWithFile(RecentSearch.ArchiveURL.path!) as? [RecentSearch])!
-        }*/
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {

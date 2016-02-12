@@ -21,23 +21,18 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.039215686274509803" green="0.29019607843137257" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store Locator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MuK-Cw-EEJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Store Locator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MuK-Cw-EEJ">
                                 <rect key="frame" x="197" y="281" width="207" height="37"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="31"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-nearby.png" translatesAutoresizingMaskIntoConstraints="NO" id="Lg8-G9-AW6">
-                                <rect key="frame" x="271" y="326" width="58" height="58"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="MuK-Cw-EEJ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Zkn-d1-O3m"/>
                             <constraint firstAttribute="trailing" secondItem="EfC-te-7ji" secondAttribute="trailing" id="bBM-RB-o0Y"/>
                             <constraint firstItem="EfC-te-7ji" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="fD5-14-TW6"/>
-                            <constraint firstItem="Lg8-G9-AW6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hCu-en-CtP"/>
-                            <constraint firstItem="Lg8-G9-AW6" firstAttribute="top" secondItem="MuK-Cw-EEJ" secondAttribute="bottom" constant="8" id="inb-fe-jxo"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="EfC-te-7ji" secondAttribute="bottom" id="nPc-Ea-FJv"/>
                             <constraint firstItem="EfC-te-7ji" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="t1g-pr-g98"/>
                             <constraint firstItem="MuK-Cw-EEJ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="v2z-EO-sVo"/>
@@ -49,7 +44,4 @@
             <point key="canvasLocation" x="763" y="480"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="icon-nearby.png" width="58" height="58"/>
-    </resources>
 </document>

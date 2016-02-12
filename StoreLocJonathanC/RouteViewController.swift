@@ -24,6 +24,7 @@ class RouteViewController: UIViewController, MKMapViewDelegate {
 
         mapView.delegate = self
         mapView.showsUserLocation = true
+        mapView.showsTraffic = true
         
         mappingService = MappingService(mapView: mapView)
         
@@ -46,7 +47,7 @@ class RouteViewController: UIViewController, MKMapViewDelegate {
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = UIColor.blueColor()
+        renderer.strokeColor = UIColor.magentaColor()
         renderer.lineWidth = 5.0
         
         return renderer
@@ -67,14 +68,12 @@ class RouteViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        let routeSteps = mappingService?.routeSteps
+        let nav = segue.destinationViewController as! UINavigationController
+        let stepsController = nav.topViewController as! DirectionStepsTableViewController
+        
+        stepsController.routeSteps = routeSteps!
     }
-    */
-
 }

@@ -1,17 +1,17 @@
 //
-//  DestinationsTableViewController.swift
+//  DirectionStepsTableViewController.swift
 //  StoreLocJonathanC
 //
-//  Created by Jonny Cameron on 03/02/2016.
+//  Created by Jonny Cameron on 10/02/2016.
 //  Copyright © 2016 Jonny Cameron. All rights reserved.
 //
 
 import UIKit
 import MapKit
 
-class DestinationsTableViewController: UITableViewController {
+class DirectionStepsTableViewController: UITableViewController {
     
-    var destinations = [MKMapItem]()
+    var routeSteps = [MKRouteStep] ()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,24 +37,27 @@ class DestinationsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.destinations.count
-    }
-
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("DestinationCell", forIndexPath: indexPath) as! DestinationTableViewCell
-
-        let item = self.destinations[indexPath.row]
-        
-        cell.nameLabel.text = item.name
-        cell.addressLabel.text = item.placemark.thoroughfare
-
-        return cell
+        return routeSteps.count
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        return 60
+        return 100
+    }
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("StepCell", forIndexPath: indexPath)
+
+        let step = routeSteps[indexPath.row]
+        
+        cell.textLabel?.text = step.instructions
+
+        return cell
+    }
+    
+    @IBAction func hideButtonTapped(sender: UIBarButtonItem) {
+        
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     /*
@@ -92,19 +95,14 @@ class DestinationsTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
-        let indexPath = self.tableView.indexPathForSelectedRow
-        let row = indexPath?.row
-        
-        let routeController = segue.destinationViewController as! RouteViewController
-        routeController.routeDestination = self.destinations[row!]
     }
+    */
 
 }

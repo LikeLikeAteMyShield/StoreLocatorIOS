@@ -26,6 +26,7 @@
 		FB35C1EB1C652638007D01AF /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1EA1C652638007D01AF /* RouteViewController.swift */; };
 		FB35C1ED1C678519007D01AF /* RecentSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1EC1C678518007D01AF /* RecentSearchDelegate.swift */; };
 		FB35C1EE1C678519007D01AF /* RecentSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1EC1C678518007D01AF /* RecentSearchDelegate.swift */; };
+		FB79813C1C6B742D00B77D4A /* DirectionStepsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB79813B1C6B742D00B77D4A /* DirectionStepsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,19 @@
 			remoteInfo = StoreLocJonathanC;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FB7981391C68EA7A00B77D4A /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		FB35C1A71C5FB5D6007D01AF /* StoreLocJonathanC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreLocJonathanC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +82,10 @@
 		FB35C1E81C628E74007D01AF /* RecentSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchTableViewCell.swift; sourceTree = "<group>"; };
 		FB35C1EA1C652638007D01AF /* RouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		FB35C1EC1C678518007D01AF /* RecentSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchDelegate.swift; sourceTree = "<group>"; };
+		FB7981181C68EA7A00B77D4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		FB79811A1C68EA7A00B77D4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FB79811C1C68EA7A00B77D4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB79813B1C6B742D00B77D4A /* DirectionStepsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionStepsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +119,7 @@
 				FB35C1A91C5FB5D6007D01AF /* StoreLocJonathanC */,
 				FB35C1BE1C5FB5D7007D01AF /* StoreLocJonathanCTests */,
 				FB35C1C91C5FB5D7007D01AF /* StoreLocJonathanCUITests */,
+				FB7981161C68EA7A00B77D4A /* StoreLocWatchApp */,
 				FB35C1A81C5FB5D6007D01AF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -133,6 +152,7 @@
 				FB35C1E81C628E74007D01AF /* RecentSearchTableViewCell.swift */,
 				FB35C1EA1C652638007D01AF /* RouteViewController.swift */,
 				FB35C1EC1C678518007D01AF /* RecentSearchDelegate.swift */,
+				FB79813B1C6B742D00B77D4A /* DirectionStepsTableViewController.swift */,
 			);
 			path = StoreLocJonathanC;
 			sourceTree = "<group>";
@@ -155,6 +175,16 @@
 			path = StoreLocJonathanCUITests;
 			sourceTree = "<group>";
 		};
+		FB7981161C68EA7A00B77D4A /* StoreLocWatchApp */ = {
+			isa = PBXGroup;
+			children = (
+				FB7981171C68EA7A00B77D4A /* Interface.storyboard */,
+				FB79811A1C68EA7A00B77D4A /* Assets.xcassets */,
+				FB79811C1C68EA7A00B77D4A /* Info.plist */,
+			);
+			path = StoreLocWatchApp;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -165,6 +195,7 @@
 				FB35C1A31C5FB5D6007D01AF /* Sources */,
 				FB35C1A41C5FB5D6007D01AF /* Frameworks */,
 				FB35C1A51C5FB5D6007D01AF /* Resources */,
+				FB7981391C68EA7A00B77D4A /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
@@ -295,6 +326,7 @@
 				FB35C1E91C628E74007D01AF /* RecentSearchTableViewCell.swift in Sources */,
 				FB35C1EB1C652638007D01AF /* RouteViewController.swift in Sources */,
 				FB35C1DB1C5FC078007D01AF /* MappingService.swift in Sources */,
+				FB79813C1C6B742D00B77D4A /* DirectionStepsTableViewController.swift in Sources */,
 				FB35C1ED1C678519007D01AF /* RecentSearchDelegate.swift in Sources */,
 				FB35C1E71C628E42007D01AF /* RecentSearchesTableViewController.swift in Sources */,
 				FB35C1AB1C5FB5D6007D01AF /* AppDelegate.swift in Sources */,
@@ -350,6 +382,14 @@
 				FB35C1B41C5FB5D6007D01AF /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FB7981171C68EA7A00B77D4A /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FB7981181C68EA7A00B77D4A /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -533,6 +573,7 @@
 				FB35C1D11C5FB5D7007D01AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FB35C1D21C5FB5D7007D01AF /* Build configuration list for PBXNativeTarget "StoreLocJonathanCTests" */ = {
 			isa = XCConfigurationList;
@@ -541,6 +582,7 @@
 				FB35C1D41C5FB5D7007D01AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FB35C1D51C5FB5D7007D01AF /* Build configuration list for PBXNativeTarget "StoreLocJonathanCUITests" */ = {
 			isa = XCConfigurationList;
@@ -549,6 +591,7 @@
 				FB35C1D71C5FB5D7007D01AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
