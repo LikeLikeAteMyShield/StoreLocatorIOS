@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class RouteViewController: UIViewController, MKMapViewDelegate {
+class RouteViewController: UIViewController, MKMapViewDelegate, MappingServiceDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapTypeControl: UISegmentedControl!
@@ -19,6 +19,8 @@ class RouteViewController: UIViewController, MKMapViewDelegate {
     
     var isFirstLoad = true
     
+    var routeLineColor = UIColor.magentaColor()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,7 +28,7 @@ class RouteViewController: UIViewController, MKMapViewDelegate {
         mapView.showsUserLocation = true
         mapView.showsTraffic = true
         
-        mappingService = MappingService(mapView: mapView)
+        mappingService = MappingService(mapView: mapView, delegate: self)
         
         mappingService?.getDirectionsToLocation(routeDestination)
     }
@@ -47,7 +49,7 @@ class RouteViewController: UIViewController, MKMapViewDelegate {
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = UIColor.magentaColor()
+        renderer.strokeColor = routeLineColor
         renderer.lineWidth = 5.0
         
         return renderer
@@ -70,10 +72,15 @@ class RouteViewController: UIViewController, MKMapViewDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let routeSteps = mappingService?.routeSteps
-        let nav = segue.destinationViewController as! UINavigationController
-        let stepsController = nav.topViewController as! DirectionStepsTableViewController
+        if segue.identifier == "showSteps" {
+            let routeSteps = mappingService?.routeSteps
+            let nav = segue.destinationViewController as! UINavigationController
+            let stepsController = nav.topViewController as! DirectionStepsTableViewController
         
-        stepsController.routeSteps = routeSteps!
+            stepsController.routeSteps = routeSteps!
+        }
+    }
+    @IBAction func buttonTapped(sender: UIBarButtonItem) {
+        routeLineColor = UIColor.redColor()
     }
 }

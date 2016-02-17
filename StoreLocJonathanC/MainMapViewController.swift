@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MainMapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate, RecentSearchDelegate {
+class MainMapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate, RecentSearchDelegate, MappingServiceDelegate {
 
     @IBOutlet weak var mapTypeControl: UISegmentedControl!
     @IBOutlet weak var mapView: MKMapView!
@@ -31,7 +31,7 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, UISearchBarDel
         
         searchBar.delegate = self
         
-        mappingService = MappingService(mapView: mapView)
+        mappingService = MappingService(mapView: mapView, delegate: self)
         
         if let searches = loadRecentSearches() {
             recentSearches += searches
@@ -110,5 +110,18 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, UISearchBarDel
     func didSelectRecentSearch(searchPhrase: String) {
         
         mappingService?.performSearch(searchPhrase)
+    }
+    
+    func didFindZeroSearchResults() {
+        
+        let oldColor = self.navigationController?.navigationBar.barTintColor
+        
+        UIView.animateWithDuration(0.5, animations: {
+            self.navigationController?.navigationBar.barTintColor = UIColor.redColor()
+            }, completion: {(finished: Bool) in
+                UIView.animateWithDuration(0.5, animations: {
+                    self.navigationController?.navigationBar.barTintColor = oldColor
+                })
+        })
     }
 }

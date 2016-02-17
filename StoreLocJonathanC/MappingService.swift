@@ -18,10 +18,12 @@ class MappingService {
     
     var spinner: UIActivityIndicatorView?
     
+    var delegate: MappingServiceDelegate
     
-    init(mapView:MKMapView) {
+    init(mapView:MKMapView, delegate: MappingServiceDelegate) {
         self.mapView = mapView
         self.searchResults = [MKMapItem]()
+        self.delegate = delegate
     }
     
     func zoomToUserLocation() {
@@ -47,6 +49,7 @@ class MappingService {
             guard let response = response else {
                 print("No results found")
                 self.stopLoadingSpinner()
+                self.delegate.didFindZeroSearchResults!()
                 return
             }
             
