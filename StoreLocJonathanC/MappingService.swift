@@ -36,7 +36,7 @@ class MappingService {
         
         clearAllPins()
         
-        startLoadingSpinner()
+        delegate.didBeginActivity!()
         
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = searchPhrase
@@ -48,8 +48,8 @@ class MappingService {
             
             guard let response = response else {
                 print("No results found")
-                self.stopLoadingSpinner()
                 self.delegate.didFindZeroSearchResults!()
+                self.delegate.didCompleteActivity!()
                 return
             }
             
@@ -64,7 +64,7 @@ class MappingService {
                 self.mapView.addAnnotation(annotation)
             }
             
-            self.stopLoadingSpinner()
+            self.delegate.didCompleteActivity!()
         }
     }
     
@@ -79,6 +79,8 @@ class MappingService {
     
     func getDirectionsToLocation(destination: MKMapItem) {
         
+        delegate.didBeginActivity!()
+        
         let request = MKDirectionsRequest()
         
         request.source = MKMapItem.mapItemForCurrentLocation()
@@ -89,6 +91,7 @@ class MappingService {
         directions.calculateDirectionsWithCompletionHandler { response, error in
             if error != nil {
                 print("Error getting directions")
+                self.delegate.didCompleteActivity!()
             } else {
                 for route in response!.routes {
                     self.mapView.addOverlay(route.polyline, level: .AboveRoads)
@@ -103,33 +106,9 @@ class MappingService {
                 annotation.title = destination.name
                 
                 self.mapView.addAnnotation(annotation)
+                
+                self.delegate.didCompleteActivity!()
             }
         }
-    }
-    
-    func startLoadingSpinner() {
-        
-        spinner = UIActivityIndicatorView()
-        
-        if mapView.mapType == .Standard {
-            spinner!.color = UIColor.blackColor()
-        } else {
-            spinner!.color = UIColor.whiteColor()
-        }
-        
-        
-        
-        let transform = CGAffineTransformMakeScale(2, 2)
-        spinner!.transform = transform
-        
-        spinner!.startAnimating()
-        mapView.addSubview(spinner!)
-        spinner!.center = mapView.center
-    }
-    
-    func stopLoadingSpinner() {
-        
-        self.spinner!.stopAnimating()
-        self.spinner!.removeFromSuperview()
     }
 }

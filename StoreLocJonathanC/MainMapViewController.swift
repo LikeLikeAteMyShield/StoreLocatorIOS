@@ -17,6 +17,9 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, UISearchBarDel
     var mappingService: MappingService?
     var recentSearches = [RecentSearch]()
     
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    
     var isFirstLoad = true
     
     override func viewDidLoad() {
@@ -36,6 +39,9 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, UISearchBarDel
         if let searches = loadRecentSearches() {
             recentSearches += searches
         }
+        
+        loadingView.layer.cornerRadius = 8
+        loadingView.hidden = true
     }
     
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
@@ -110,6 +116,18 @@ class MainMapViewController: UIViewController, MKMapViewDelegate, UISearchBarDel
     func didSelectRecentSearch(searchPhrase: String) {
         
         mappingService?.performSearch(searchPhrase)
+    }
+    
+    func didBeginActivity() {
+        
+        loadingView.hidden = false
+        indicator.startAnimating()
+    }
+    
+    func didCompleteActivity() {
+        
+        indicator.stopAnimating()
+        loadingView.hidden = true
     }
     
     func didFindZeroSearchResults() {

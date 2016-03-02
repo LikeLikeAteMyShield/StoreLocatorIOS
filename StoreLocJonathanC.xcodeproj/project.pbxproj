@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		FB29F2851C74B45800EF1F32 /* MappingServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29F2841C74B45800EF1F32 /* MappingServiceDelegate.swift */; };
 		FB29F2861C74B45800EF1F32 /* MappingServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29F2841C74B45800EF1F32 /* MappingServiceDelegate.swift */; };
+		FB29F2881C74C23200EF1F32 /* MapSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29F2871C74C23200EF1F32 /* MapSettingsViewController.swift */; };
+		FB29F28A1C74D13800EF1F32 /* MapSettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29F2891C74D13800EF1F32 /* MapSettingsDelegate.swift */; };
+		FB29F28B1C74D13800EF1F32 /* MapSettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB29F2891C74D13800EF1F32 /* MapSettingsDelegate.swift */; };
 		FB35C1AB1C5FB5D6007D01AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1AA1C5FB5D6007D01AF /* AppDelegate.swift */; };
 		FB35C1B01C5FB5D6007D01AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB35C1AE1C5FB5D6007D01AF /* Main.storyboard */; };
 		FB35C1B21C5FB5D6007D01AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB35C1B11C5FB5D6007D01AF /* Assets.xcassets */; };
@@ -63,6 +66,8 @@
 
 /* Begin PBXFileReference section */
 		FB29F2841C74B45800EF1F32 /* MappingServiceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappingServiceDelegate.swift; sourceTree = "<group>"; };
+		FB29F2871C74C23200EF1F32 /* MapSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSettingsViewController.swift; sourceTree = "<group>"; };
+		FB29F2891C74D13800EF1F32 /* MapSettingsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSettingsDelegate.swift; sourceTree = "<group>"; };
 		FB35C1A71C5FB5D6007D01AF /* StoreLocJonathanC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreLocJonathanC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB35C1AA1C5FB5D6007D01AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB35C1AF1C5FB5D6007D01AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -153,6 +158,8 @@
 				FB35C1EC1C678518007D01AF /* RecentSearchDelegate.swift */,
 				FB79813B1C6B742D00B77D4A /* DirectionStepsTableViewController.swift */,
 				FB29F2841C74B45800EF1F32 /* MappingServiceDelegate.swift */,
+				FB29F2871C74C23200EF1F32 /* MapSettingsViewController.swift */,
+				FB29F2891C74D13800EF1F32 /* MapSettingsDelegate.swift */,
 			);
 			path = StoreLocJonathanC;
 			sourceTree = "<group>";
@@ -312,6 +319,8 @@
 				FB35C1E01C623C01007D01AF /* DestinationsTableViewController.swift in Sources */,
 				FB35C1E21C623CD2007D01AF /* DestinationTableViewCell.swift in Sources */,
 				FB35C1E41C628BE3007D01AF /* RecentSearch.swift in Sources */,
+				FB29F2881C74C23200EF1F32 /* MapSettingsViewController.swift in Sources */,
+				FB29F28A1C74D13800EF1F32 /* MapSettingsDelegate.swift in Sources */,
 				FB29F2851C74B45800EF1F32 /* MappingServiceDelegate.swift in Sources */,
 				FB35C1D91C5FB882007D01AF /* MainMapViewController.swift in Sources */,
 				FB35C1E91C628E74007D01AF /* RecentSearchTableViewCell.swift in Sources */,
@@ -332,6 +341,7 @@
 				FB35C1DC1C5FC078007D01AF /* MappingService.swift in Sources */,
 				FB35C1C01C5FB5D7007D01AF /* StoreLocJonathanCTests.swift in Sources */,
 				FB35C1E51C628BE3007D01AF /* RecentSearch.swift in Sources */,
+				FB29F28B1C74D13800EF1F32 /* MapSettingsDelegate.swift in Sources */,
 				FB35C1EE1C678519007D01AF /* RecentSearchDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

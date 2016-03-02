@@ -9,10 +9,13 @@
 import UIKit
 import MapKit
 
-class RouteViewController: UIViewController, MKMapViewDelegate, MappingServiceDelegate {
+class RouteViewController: UIViewController, MKMapViewDelegate, MappingServiceDelegate, MapSettingsDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapTypeControl: UISegmentedControl!
+    
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     var routeDestination: MKMapItem!
     var mappingService: MappingService?
@@ -31,6 +34,8 @@ class RouteViewController: UIViewController, MKMapViewDelegate, MappingServiceDe
         mappingService = MappingService(mapView: mapView, delegate: self)
         
         mappingService?.getDirectionsToLocation(routeDestination)
+        
+        loadingView.layer.cornerRadius = 8
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,7 +85,22 @@ class RouteViewController: UIViewController, MKMapViewDelegate, MappingServiceDe
             stepsController.routeSteps = routeSteps!
         }
     }
-    @IBAction func buttonTapped(sender: UIBarButtonItem) {
-        routeLineColor = UIColor.redColor()
+    
+    func didChangeLineColor(color: UIColor) {
+        
+        routeLineColor = color
+        mappingService?.getDirectionsToLocation(routeDestination)
+    }
+    
+    func didBeginActivity() {
+        
+        loadingView.hidden = false
+        indicator.startAnimating()
+    }
+    
+    func didCompleteActivity() {
+        
+        indicator.stopAnimating()
+        loadingView.hidden = true
     }
 }

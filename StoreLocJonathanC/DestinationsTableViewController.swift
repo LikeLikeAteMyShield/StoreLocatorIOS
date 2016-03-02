@@ -31,7 +31,22 @@ class DestinationsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
+        if destinations.count == 0 {
+            
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+            label.text = "No destinations to show. Please perform a search"
+            label.numberOfLines = 2
+            label.textAlignment = .Center
+            label.font = UIFont(name: "Palatino-Italic", size: 18)
+            label.sizeToFit()
+            
+            self.tableView.backgroundView = label
+            
+            self.tableView.separatorStyle = .None
+            return 0
+        }
+        
         return 1
     }
 

@@ -11,4 +11,8 @@ import Foundation
 @objc protocol MappingServiceDelegate {
     
     optional func didFindZeroSearchResults()
+    
+    optional func didBeginActivity()
+    
+    optional func didCompleteActivity()
 }
